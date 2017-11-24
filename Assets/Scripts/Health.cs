@@ -25,12 +25,13 @@ public class Health : MonoBehaviour {
 	}
 
 	void Update() {
-		if(m_hitDelay <= 0) {
+		if(m_currentHealth <= 0) {
 			Die();
 		}
 	}
 
 	public void ApplyDamage(int amount) {
+		
 		m_currentHealth -= amount;
 		if(m_currentHealth <=0) {
 			m_hitDelay = m_deathTime;
@@ -42,9 +43,9 @@ public class Health : MonoBehaviour {
 	}
 
 	private void Die() {
-		if(m_hitDelay <= 0) {
+		//if(m_hitDelay <= 0) {
 			Destroy(gameObject);
-		}
+	//	}
 	}
 
 	public Transform GetAgroTarget() {
