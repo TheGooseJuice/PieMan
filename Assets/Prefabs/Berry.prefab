@@ -21,7 +21,9 @@ GameObject:
   - component: {fileID: 4484300961107324}
   - component: {fileID: 114162531763215232}
   - component: {fileID: 54952679425536522}
+  - component: {fileID: 65580972794566760}
   - component: {fileID: 136718323240204426}
+  - component: {fileID: 114684122160271364}
   m_Layer: 10
   m_Name: Berry
   m_TagString: Untagged
@@ -66,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1091958886062484}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: 0.525, z: 0.62}
+  m_LocalPosition: {x: -1.1109121, y: 0.83, z: 1.9994309}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4075644703824116}
@@ -125,8 +127,20 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 124
   m_CollisionDetection: 0
+--- !u!65 &65580972794566760
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1091958886062484}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 3, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114162531763215232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,6 +155,21 @@ MonoBehaviour:
   m_maxHP: 100
   m_deathTime: 3
   m_hitReact: 0.1
+--- !u!114 &114684122160271364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1091958886062484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c21cd8a5a9046f848a4d3e116b931451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: -1
+  speed2: 0
+  target: {fileID: 0}
+  m_rangebox: {fileID: 65580972794566760}
 --- !u!136 &136718323240204426
 CapsuleCollider:
   m_ObjectHideFlags: 1
