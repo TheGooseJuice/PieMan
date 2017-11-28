@@ -14,6 +14,7 @@ public class RPGCharacterController : MonoBehaviour {
 	public float m_walkSpeed = 4.0f;
 	public float m_turnSpeed = 250.0f;
 	public float m_moveBackwardsMultiplier = 0.75f;
+	public Vector3 m_startPos;
 
 	//Internal Variables
 	private float m_speedMultiplier = 0.0f;
@@ -29,6 +30,7 @@ public class RPGCharacterController : MonoBehaviour {
 
 
 	void Awake(){
+		m_startPos=transform.position;
 
 		m_controller = GetComponent<CharacterController>();
 		m_animationController = GetComponent<Animator>();

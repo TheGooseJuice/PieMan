@@ -50,7 +50,11 @@ public class CameraController : MonoBehaviour {
 
 	private bool m_mouseSideButton = false;
 
+	public Vector3 m_camStartPos;
+
 	void Start(){
+		
+		m_camStartPos=transform.position;
 		Vector3 angles = transform.eulerAngles;
 		m_xDeg = angles.x;
 		m_yDeg = angles.y;
