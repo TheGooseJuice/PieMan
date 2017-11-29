@@ -14,6 +14,7 @@ public class RPGCharacterController : MonoBehaviour {
 	public float m_walkSpeed = 4.0f;
 	public float m_turnSpeed = 250.0f;
 	public float m_moveBackwardsMultiplier = 0.75f;
+	public Vector3 m_startPos;
 
 	//Internal Variables
 	private float m_speedMultiplier = 0.0f;
@@ -26,9 +27,16 @@ public class RPGCharacterController : MonoBehaviour {
 	private CharacterController m_controller;
 	private int m_attackState;
 
+	public Rigidbody piePrefab;
+    public Transform barrelEnd;
+    
+	public float flightSpeed = 10.0f;
+
+	
 
 
 	void Awake(){
+		m_startPos=transform.position;
 
 		m_controller = GetComponent<CharacterController>();
 		m_animationController = GetComponent<Animator>();
@@ -119,16 +127,29 @@ public class RPGCharacterController : MonoBehaviour {
 		AnimatorStateInfo currentUpperTorsoState = m_animationController.GetCurrentAnimatorStateInfo(1);
 		
 		if(currentUpperTorsoState.nameHash == m_attackState) {
-			Debug.Log("attacking");
+			Debug.Log ("works");
 			m_weaponHitBox.enabled = true;
 		} else {
 			if(Input.GetButtonDown("Attack")) {
+				
 				m_animationController.SetBool("isAttacking", true);
 			} else {
 				m_animationController.SetBool("isAttacking", false);
 				m_weaponHitBox.enabled = false;
 			}
 		}
+		if(Input.GetButtonDown("Fire1"))
+        { 
+			m_animationController.SetBool("isRangeAttacking", true);
+			Rigidbody rocketInstance;
+            rocketInstance = Instantiate(piePrefab, barrelEnd.position, barrelEnd.rotation) as Rigidbody;
+            rocketInstance.AddForce(barrelEnd.forward * flightSpeed);
+			
+			} else {
+				Debug.Log("hio");
+				m_animationController.SetBool("isRangeAttacking", false);
+           
+        }
 		
 	}
 }

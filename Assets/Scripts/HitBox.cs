@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HitBox : MonoBehaviour {
 
+
 public int m_minDamage = 1;
 public int m_maxDamage = 5;
 
@@ -14,5 +15,8 @@ void OnTriggerEnter(Collider other) {
 		healthScript.ApplyDamage(Random.Range(m_minDamage, m_maxDamage));
 	}
 
+	
+
 }
 }
+

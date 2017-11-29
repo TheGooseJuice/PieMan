@@ -206,7 +206,7 @@ ModelImporter:
       name: Standing Melee Attack Horizontal-1
       takeName: mixamo.com
       firstFrame: 10
-      lastFrame: 37
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

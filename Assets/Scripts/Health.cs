@@ -14,7 +14,7 @@ public class Health : MonoBehaviour {
 	private int m_currentHealth;
 	private Animator m_animController;
 
-	private float m_hitDelay;
+//	private float m_hitDelay;
 
 	private Transform m_agroTarget;
 
@@ -34,10 +34,10 @@ public class Health : MonoBehaviour {
 		
 		m_currentHealth -= amount;
 		if(m_currentHealth <=0) {
-			m_hitDelay = m_deathTime;
-			m_animController.SetBool("died", true);
+//			m_hitDelay = m_deathTime;
+//			m_animController.SetBool("died", true);
 		}else{
-			m_hitDelay = m_hitReact;
+//			m_hitDelay = m_hitReact;
 			m_animController.SetBool("tookDamage", true);
 		}
 	}
@@ -55,5 +55,7 @@ public class Health : MonoBehaviour {
 	public void SetAgroTarget(Transform target) {
 		m_agroTarget = target;
 }
+
+
 
 }

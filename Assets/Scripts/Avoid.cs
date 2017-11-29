@@ -13,6 +13,7 @@ public Transform target;
 public Collider m_hit;
 bool InRange = false;
 
+
 void OnTriggerEnter(Collider other)
 {
     if(other.gameObject.tag == "Player" ){
@@ -25,21 +26,31 @@ void OnTriggerEnter(Collider other)
 void OnTriggerExit(Collider other)
 {
     if(other.gameObject.tag == "Player" ){
-    Debug.Log("bye");
+    
     InRange = false;
     
 }
+
+   
+    
+
+
 }
 
 void Update(){ 
+
+    transform.Rotate(Vector3.right * Time.deltaTime * 100);
     if(InRange == true){
            float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+        gameObject.transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+        
     } else {
          float step = speed2 * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target.position, step);
         
     }
+
+   
 }
 }
  
