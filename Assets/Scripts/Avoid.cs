@@ -39,11 +39,11 @@ void OnTriggerExit(Collider other)
 
 void Update(){ 
 
-    
+    transform.Rotate(Vector3.right * Time.deltaTime * 100);
     if(InRange == true){
            float step = speed * Time.deltaTime;
         gameObject.transform.position = Vector3.MoveTowards(transform.position, target.position, step);
-
+        
     } else {
          float step = speed2 * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, target.position, step);
