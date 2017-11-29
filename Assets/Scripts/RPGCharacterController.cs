@@ -32,7 +32,7 @@ public class RPGCharacterController : MonoBehaviour {
 
 		m_controller = GetComponent<CharacterController>();
 		m_animationController = GetComponent<Animator>();
-		m_attackState = Animator.StringToHash("UpperTorso.attack");
+		m_attackState = Animator.StringToHash("UpperTorso.Attack");
 	}
 
 	void Update(){
@@ -117,7 +117,9 @@ public class RPGCharacterController : MonoBehaviour {
 		//is player attacking
 
 		AnimatorStateInfo currentUpperTorsoState = m_animationController.GetCurrentAnimatorStateInfo(1);
-		if(currentUpperTorsoState.shortNameHash == m_attackState) {
+		
+		if(currentUpperTorsoState.nameHash == m_attackState) {
+			Debug.Log("attacking");
 			m_weaponHitBox.enabled = true;
 		} else {
 			if(Input.GetButtonDown("Attack")) {
