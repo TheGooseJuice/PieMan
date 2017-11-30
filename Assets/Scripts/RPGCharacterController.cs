@@ -8,6 +8,7 @@ public class RPGCharacterController : MonoBehaviour {
 	public float m_gravity = 20.0f;
 
 	public Collider m_weaponHitBox;
+	public Collider m_weaponHitBox2;
 	//Movement Speeds
 	public float m_jumpSpeed = 8.0f;
 	public float m_runSpeed = 10.0f;
@@ -127,8 +128,9 @@ public class RPGCharacterController : MonoBehaviour {
 		AnimatorStateInfo currentUpperTorsoState = m_animationController.GetCurrentAnimatorStateInfo(1);
 		
 		if(currentUpperTorsoState.nameHash == m_attackState) {
-			Debug.Log ("works");
+			
 			m_weaponHitBox.enabled = true;
+			m_weaponHitBox2.enabled= true;
 		} else {
 			if(Input.GetButtonDown("Attack")) {
 				
@@ -136,6 +138,7 @@ public class RPGCharacterController : MonoBehaviour {
 			} else {
 				m_animationController.SetBool("isAttacking", false);
 				m_weaponHitBox.enabled = false;
+				m_weaponHitBox2.enabled = false;
 			}
 		}
 		if(Input.GetButtonDown("Fire1"))
@@ -146,7 +149,7 @@ public class RPGCharacterController : MonoBehaviour {
             rocketInstance.AddForce(barrelEnd.forward * flightSpeed);
 			
 			} else {
-				Debug.Log("hio");
+				
 				m_animationController.SetBool("isRangeAttacking", false);
            
         }

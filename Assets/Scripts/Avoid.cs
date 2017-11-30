@@ -9,9 +9,18 @@ public float speed = 3.0f;
 public float speed2 = 0f;
 public Transform target;
 
+public Rigidbody m_rb;
+
 
 public Collider m_hit;
 bool InRange = false;
+
+
+void Start()
+{
+    m_rb = GetComponent<Rigidbody>();
+    
+}
 
 
 void OnTriggerEnter(Collider other)
@@ -41,14 +50,16 @@ void Update(){
 
     transform.Rotate(Vector3.right * Time.deltaTime * 100);
     if(InRange == true){
-           float step = speed * Time.deltaTime;
-        gameObject.transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+        Vector3 run = target.position - transform.position;
+        run.y = 0;
+        run.Normalize();
+        m_rb.velocity =  run * speed;
+           
         
-    } else {
-         float step = speed2 * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+   
         
     }
+
 
    
 }
