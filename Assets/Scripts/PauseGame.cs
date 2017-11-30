@@ -6,12 +6,11 @@ using UnityEngine;
  public class PauseGame : MonoBehaviour {
  
      public GameObject pauseMenu;
-     private bool isEnabled = true;
+     private bool isEnabled = false;
      public bool paused;
 
      void Start() {
-         paused = true;
-         Pause();
+         paused = false;
      }
      void Update()
      {

@@ -9,9 +9,7 @@ public class StateGameMenu : GameState {
 	public override void Exit() { }
 
 	public void PlayGame() {
-		
 		m_gm.NewGameState(m_gm.m_stateGamePlay);
-		
 	}
 
 	public void QuitGame() {
