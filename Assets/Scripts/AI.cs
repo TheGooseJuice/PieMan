@@ -28,6 +28,7 @@ public class AI : MonoBehaviour {
 			nav.SetDestination(player.position);
 			
 		}
+<<<<<<< HEAD
 		if(distance<=3){
 			animate.SetBool("IsAttacking", true);
 		}
@@ -35,6 +36,9 @@ public class AI : MonoBehaviour {
 			animate.SetBool("IsAttacking", false);
 		}
 	Debug.Log(distance);
+=======
+	
+>>>>>>> 006e88799ed5d4e8102c7182101138bb60137788
 	}
 
 }
