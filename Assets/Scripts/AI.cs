@@ -26,6 +26,6 @@ public class AI : MonoBehaviour {
 			nav.SetDestination(player.position);
 			
 		}
-	Debug.Log(distance);
+	
 	}
 }
