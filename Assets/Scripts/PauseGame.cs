@@ -9,6 +9,7 @@ using UnityEngine;
      private bool isEnabled = false;
      public bool paused;
 
+    public AudioSource m_audio;
      void Start() {
          paused = false;
      }
@@ -21,6 +22,7 @@ using UnityEngine;
              isEnabled = true;
              paused = !paused;
              Pause ();
+             m_audio.Stop();
          }
         
 
@@ -31,6 +33,7 @@ using UnityEngine;
              isEnabled = false;
              paused = false;
              Pause();
+             m_audio.Play();
          }
      }
 void Pause(){

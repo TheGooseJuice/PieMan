@@ -5,7 +5,7 @@ public enum GameStates { INTRO, MENU, PLAY, WON, LOST }
 
 public class StateManager : MonoBehaviour {
 
-	
+	public MusicStop m_stopAudio;
 	public GameObject[] m_gameStates; 
 	private GameStates m_activeState; 
 	private int m_numStates;
@@ -31,6 +31,7 @@ public class StateManager : MonoBehaviour {
 
 	public void PlayGame() {
 		GameManager.Instance.m_stateGameMenu.PlayGame();
+		m_stopAudio.RemoveAudio();
 		m_gameStates[(int)m_activeState].SetActive(false);
 		m_activeState = GameStates.PLAY;
 		m_gameStates[(int)m_activeState].SetActive(true);
