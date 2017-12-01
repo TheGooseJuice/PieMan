@@ -166,7 +166,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Punching-1
       takeName: mixamo.com
-      firstFrame: 0
+      firstFrame: 10.2
       lastFrame: 35
       wrapMode: 0
       orientationOffsetY: 0

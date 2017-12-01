@@ -1,6 +1,8 @@
 ﻿public abstract class GameState {
 
 	protected GameManager m_gm;
+
+	
 	public GameState(GameManager gm) {
 		m_gm = gm;
 	}
