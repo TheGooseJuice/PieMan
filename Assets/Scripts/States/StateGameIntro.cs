@@ -2,7 +2,7 @@
 
 public class StateGameIntro : GameState {
 
-	private float m_countDown = 5f;
+	private float m_countDown = 4f;
 
 	public StateGameIntro(GameManager gm):base(gm) { }
 
