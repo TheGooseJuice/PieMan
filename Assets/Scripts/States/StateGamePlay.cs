@@ -12,13 +12,11 @@ public class StateGamePlay : GameState {
 
 	public override void Enter() {
 		m_gameTime = 45f;
-		m_gm.ResetStats();
+	
 	}
 
 	public override void Execute() {
-		if(m_gm.m_bulletHits > MAX_HITS || m_gm.m_missleHits > MAX_HITS || m_gm.m_rocketHits > MAX_HITS){
-			m_gm.NewGameState(m_gm.m_stateGameWon);
-		}
+	
 
 		m_gameTime -= Time.deltaTime;
 		if(m_gameTime <= 0) {

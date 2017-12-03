@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 135777317828816714}
   m_Layer: 10
   m_Name: Berry
-  m_TagString: Untagged
+  m_TagString: Berry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1091958886062484}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.7200165, y: 1.35, z: -17.08}
+  m_LocalPosition: {x: 0.089149475, y: -0.021016, z: 0.33}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4075644703824116}
@@ -226,6 +226,9 @@ MonoBehaviour:
   m_maxHP: 100
   m_deathTime: 3
   m_hitReact: 0.1
+  piePrefab: {fileID: 54302771173965282, guid: b696a80bb29dafd448d91d1901bc2b37, type: 2}
+  barrelEnd: {fileID: 4484300961107324}
+  flightSpeed: 0
 --- !u!114 &114684122160271364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -237,10 +240,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c21cd8a5a9046f848a4d3e116b931451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -3
+  speed: -10
   speed2: 0
-  target: {fileID: 0}
-  m_rb: {fileID: 0}
+  m_rb: {fileID: 54952679425536522}
   m_hit: {fileID: 0}
 --- !u!135 &135777317828816714
 SphereCollider:

@@ -34,7 +34,7 @@ public class AI : MonoBehaviour {
 		else {
 			animate.SetBool("IsAttacking", false);
 		}
-	Debug.Log(distance);
+	
 	}
 
 }

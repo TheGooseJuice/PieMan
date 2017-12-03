@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RPGCharacterController : MonoBehaviour {
 	public string m_moveStatus = "idle";
@@ -17,6 +18,12 @@ public class RPGCharacterController : MonoBehaviour {
 	public float m_moveBackwardsMultiplier = 0.75f;
 	public Vector3 m_startPos;
 
+	//Shooting Var
+
+	public Rigidbody piePrefab;
+    public Transform barrelEnd;
+    public float flightSpeed = 10.0f;
+
 	//Internal Variables
 	private float m_speedMultiplier = 0.0f;
 	private bool m_grounded = false;
@@ -28,12 +35,58 @@ public class RPGCharacterController : MonoBehaviour {
 	private CharacterController m_controller;
 	private int m_attackState;
 
-	public Rigidbody piePrefab;
-    public Transform barrelEnd;
-    
-	public float flightSpeed = 10.0f;
+	//Scoring vars
+	public int m_score;
+	public int m_collected;
+	public float m_time;
+	public Text countText;
+	public Text countScore;
+	public Text countTime;
+
+
+	void Start(){
+		m_score = 0;
+		m_collected = 0;
+		m_time = 130;
+		countText.text = "Pies Collected: " + m_collected.ToString();
+		countScore.text = "Score: " + m_score.ToString();
+		countTime.text = "Time: " + m_time.ToString();
+
+		
+	}
+
+
+	void OnTriggerEnter(Collider other){
+		
+		if(other.gameObject.tag == "Pie"){
+			m_collected = m_collected + 1;
+			countText.text = "Pies Collected: " + m_collected.ToString();
+			countScore.text = "Score: " + m_score.ToString();
+			other.gameObject.SetActive (false);
+		}
+
+			if(other.gameObject.tag == "PieHouse"){
+				Debug.Log("Hello", gameObject);
+				m_score = m_collected * m_collected + m_score;
+				m_collected = 0;
+				countText.text = "Pies Collected: " + m_collected.ToString();
+				countScore.text = "Score: " + m_score.ToString();
+				
+			}
+				if(other.gameObject.tag == "Bear"){
+					m_collected = m_collected / 2;
+					countText.text = "Pies Collected: " + m_collected.ToString();
+				}
+		
+	}
+
+	void gameTime(){
+		m_time -= Time.deltaTime;
+		countTime.text = "Time: " + m_time.ToString();
+	}
 
 	
+		
 
 
 	void Awake(){
@@ -45,6 +98,7 @@ public class RPGCharacterController : MonoBehaviour {
 	}
 
 	void Update(){
+		gameTime();
 		m_moveStatus = "idle";
 		m_isWalking = m_walkByDefault;
 

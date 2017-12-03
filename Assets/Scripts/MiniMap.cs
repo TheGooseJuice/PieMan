@@ -14,27 +14,28 @@ public class MiniMap : MonoBehaviour
 	private Vector3 targetAngle;
 	private Vector3 targetPos;
 	private Camera cam;
- void Start(){
-	cam = GetComponent<Camera> ();
-	camAngle = transform.eulerAngles;
-	targetAngle = target.transform.eulerAngles;
-	camAngle.x = 90;
-	camAngle.y = targetAngle.y;
-	transform.eulerAngles = camAngle;
- 	}
- void Update(){
-	targetPos = target.transform.position;
-	camPos = targetPos;
-	camPos.y += height;
-	transform.position = camPos;
-	cam.orthographicSize = distance;
-	Vector3 compassAngle = new Vector3();
-	compassAngle.z = target.transform.eulerAngles.y;
-		if (rotate) {
-		mapGUI.transform.eulerAngles = compassAngle;
-		marker.transform.eulerAngles = new Vector3();
-	} else {
-	marker.transform.eulerAngles = -compassAngle;
-	}
+	
+	void Start(){
+		cam = GetComponent<Camera> ();
+		camAngle = transform.eulerAngles;
+		targetAngle = target.transform.eulerAngles;
+		camAngle.x = 90;
+		camAngle.y = targetAngle.y;
+		transform.eulerAngles = camAngle;
+		}
+	void Update(){
+		targetPos = target.transform.position;
+		camPos = targetPos;
+		camPos.y += height;
+		transform.position = camPos;
+		cam.orthographicSize = distance;
+		Vector3 compassAngle = new Vector3();
+		compassAngle.z = target.transform.eulerAngles.y;
+			if (rotate) {
+			mapGUI.transform.eulerAngles = compassAngle;
+			marker.transform.eulerAngles = new Vector3();
+		} else {
+		marker.transform.eulerAngles = -compassAngle;
+		}
 	}
 }

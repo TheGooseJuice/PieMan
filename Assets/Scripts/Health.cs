@@ -15,18 +15,31 @@ public class Health : MonoBehaviour {
 	private Animator m_animController;
 
 //	private float m_hitDelay;
-
+	
 	private Transform m_agroTarget;
+	public Rigidbody piePrefab;
+    public Transform barrelEnd;
+	public float flightSpeed;
+
 
 	void Start() {
 		m_animController = GetComponent<Animator>();
 		m_currentHealth = m_maxHP;
 		
+		
 	}
+
+	
 
 	void Update() {
 		if(m_currentHealth <= 0) {
 			Die();
+			
+			if(gameObject.tag == "Berry"){
+				makePie();
+				
+			}
+			
 		}
 	}
 
@@ -42,11 +55,19 @@ public class Health : MonoBehaviour {
 		}
 	}
 
+	private void makePie(){
+		Rigidbody enemyInstance;
+			enemyInstance = Instantiate(piePrefab, barrelEnd.position, barrelEnd.rotation) as Rigidbody;
+			enemyInstance.AddForce(barrelEnd.forward * flightSpeed);
+
+	}
+
 	private void Die() {
 		//if(m_hitDelay <= 0) {
 			Destroy(gameObject);
-	//	}
-	}
+			
+		}
+	
 
 	public Transform GetAgroTarget() {
 		return m_agroTarget ? m_agroTarget : null;

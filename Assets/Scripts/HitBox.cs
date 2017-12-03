@@ -8,15 +8,12 @@ public class HitBox : MonoBehaviour {
 public int m_minDamage = 1;
 public int m_maxDamage = 5;
 
-void OnTriggerEnter(Collider other) {
-	Debug.Log (other.name);
-	Health healthScript = other.GetComponent<Health>();
-	if(healthScript != null) {
-		healthScript.ApplyDamage(Random.Range(m_minDamage, m_maxDamage));
+	void OnTriggerEnter(Collider other) {
+		Health healthScript = other.GetComponent<Health>();
+		
+		if(healthScript != null) {
+			healthScript.ApplyDamage(Random.Range(m_minDamage, m_maxDamage));
+		}
 	}
-
-	
-
-}
 }
 
