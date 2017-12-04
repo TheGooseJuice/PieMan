@@ -12,7 +12,7 @@ public class ItemKnockback : MonoBehaviour {
          
           
 
-         if(other.gameObject.tag =="Bullet"){
+         if(other.gameObject.tag =="Bear"){
 
           // calculate force vector
             Vector3 m_force = transform.position - other.transform.position;
@@ -25,17 +25,10 @@ public class ItemKnockback : MonoBehaviour {
             gameObject.GetComponent<Rigidbody>().AddTorque(transform.right * 100);
             gameObject.GetComponent<Collider>().enabled=false;
 
-            StartCoroutine(WaitForDestroy());
+           
          }
      
 }
- private IEnumerator WaitForDestroy()
-    {
-       
-           yield return new WaitForSeconds(5);
-            Destroy(gameObject);
-           
-        
-    }
+
 
 }

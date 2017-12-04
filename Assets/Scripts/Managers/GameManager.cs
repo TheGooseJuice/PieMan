@@ -40,6 +40,12 @@ public class GameManager : MonoBehaviour {
 	
 	}
 
+	public void EndGame() {
+		NewGameState(m_stateGameWon);
+		 
+		UpdateFSM(GameStates.WON);
+	}
+
 	private void Update() {
 		if(m_currentState != null) {
 			m_currentState.Execute();

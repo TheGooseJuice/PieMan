@@ -36,24 +36,57 @@ public class RPGCharacterController : MonoBehaviour {
 	private int m_attackState;
 
 	//Scoring vars
-	public int m_score;
+	public int m_score = 0;
 	public int m_collected;
 	public float m_time;
 	public Text countText;
 	public Text countScore;
 	public Text countTime;
 
+	public bool end = false;
+	
+	
+
+	//enemy col
+
+	public Rigidbody m_enemy;
+	public Vector3 m_NewForce;
+	public GameState m_state;
+	
+	public GameManager m_gm;
+	Vector3 originalPos;
+
+	public bool scoreReset;
+
+	
+	
+	
+
 
 	void Start(){
-		m_score = 0;
 		m_collected = 0;
-		m_time = 130;
+		m_time = 60;
 		countText.text = "Pies Collected: " + m_collected.ToString();
 		countScore.text = "Score: " + m_score.ToString();
 		countTime.text = "Time: " + m_time.ToString();
+		gameObject.transform.position = originalPos;
+	
+		
+		
 
 		
 	}
+	void score(){
+		
+			m_score = 0;
+		
+		
+	}
+
+	
+
+
+	
 
 
 	void OnTriggerEnter(Collider other){
@@ -66,8 +99,9 @@ public class RPGCharacterController : MonoBehaviour {
 		}
 
 			if(other.gameObject.tag == "PieHouse"){
-				Debug.Log("Hello", gameObject);
+				
 				m_score = m_collected * m_collected + m_score;
+				m_time = m_time + m_collected;
 				m_collected = 0;
 				countText.text = "Pies Collected: " + m_collected.ToString();
 				countScore.text = "Score: " + m_score.ToString();
@@ -75,15 +109,31 @@ public class RPGCharacterController : MonoBehaviour {
 			}
 				if(other.gameObject.tag == "Bear"){
 					m_collected = m_collected / 2;
-					countText.text = "Pies Collected: " + m_collected.ToString();
-				}
+					countText.text = "Pies Collected: " + m_collected.ToString();				
+        
+            
+				
 		
+				}
 	}
 
 	void gameTime(){
 		m_time -= Time.deltaTime;
+			
 		countTime.text = "Time: " + m_time.ToString();
+
+		
+		if(m_time <= 0){
+			
+			GameManager.Instance.EndGame();
+			Start();
+			
+		}
+		
+		
 	}
+
+
 
 	
 		
@@ -91,7 +141,7 @@ public class RPGCharacterController : MonoBehaviour {
 
 	void Awake(){
 		m_startPos=transform.position;
-
+		score();
 		m_controller = GetComponent<CharacterController>();
 		m_animationController = GetComponent<Animator>();
 		m_attackState = Animator.StringToHash("UpperTorso.Attack");
@@ -99,6 +149,12 @@ public class RPGCharacterController : MonoBehaviour {
 
 	void Update(){
 		gameTime();
+		
+
+	
+
+	
+		
 		m_moveStatus = "idle";
 		m_isWalking = m_walkByDefault;
 

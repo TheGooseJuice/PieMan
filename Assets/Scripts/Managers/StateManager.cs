@@ -9,6 +9,7 @@ public class StateManager : MonoBehaviour {
 	public GameObject[] m_gameStates; 
 	private GameStates m_activeState; 
 	private int m_numStates;
+	public RPGCharacterController m_cc;
 
 	void Awake() {
 		m_numStates = m_gameStates.Length;
@@ -35,6 +36,8 @@ public class StateManager : MonoBehaviour {
 		m_gameStates[(int)m_activeState].SetActive(false);
 		m_activeState = GameStates.PLAY;
 		m_gameStates[(int)m_activeState].SetActive(true);
+		m_cc.scoreReset = true;
+		
 	}
 
 	public void QuitGame() {

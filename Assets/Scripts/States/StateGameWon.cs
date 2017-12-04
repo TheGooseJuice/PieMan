@@ -1,24 +1,31 @@
 ﻿using UnityEngine;
 
 public class StateGameWon : GameState {
-
+	public RPGCharacterController m_cc;
 	private float m_countDown = 5f;
 
 	public StateGameWon(GameManager gm):base(gm) { }
 
 	public override void Enter() {
-		m_countDown = 5f; 
+		
 	}
 
 	public override void Execute() {
-		if(m_countDown <= 0 ){
-			//TODO: Update HUD 
-			m_gm.NewGameState(m_gm.m_stateGameMenu); 
-
-		} else {
-			m_countDown -= Time.deltaTime;
-		}
 	}
 
 	public override void Exit() {}
+
+		public void PlayGame() {
+		m_gm.NewGameState(m_gm.m_stateGamePlay);
+		m_cc.scoreReset = true;
+	}
+	void Update()
+	{
+		
+	}
+	public void QuitGame() {
+		Application.Quit();
+	}
 }
+
+

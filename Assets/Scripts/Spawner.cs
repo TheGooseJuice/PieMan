@@ -10,7 +10,7 @@ public Rigidbody berryPrefab;
 public Transform barrelEnd;
 public float flightSpeed;
 public float timeLeft = 5;
-public static DestroyAfterTime instance;
+
 
 
 	public void Spawning(){
@@ -31,21 +31,21 @@ public static DestroyAfterTime instance;
 	}
 
 	// Update is called once per frame
-	void Update () {
+		void Update () {
 
-		timeLeft -= Time.deltaTime;
-     	if ( timeLeft < 0 )
-    	{
-		
-			timeCount();
-
-			if(Spawn == true) {
-				
-				Spawning();
-				Spawn = false;
-				timeCounted = 1;
-			}
+			timeLeft -= Time.deltaTime;
+			if ( timeLeft < 0 )
+			{
 			
+				timeCount();
+
+				if(Spawn == true) {
+					
+					Spawning();
+					Spawn = false;
+					timeCounted = 1;
+				}
+				
+			}
 		}
-	}
 }

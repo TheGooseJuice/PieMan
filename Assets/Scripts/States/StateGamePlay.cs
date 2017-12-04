@@ -6,22 +6,31 @@ public class StateGamePlay : GameState {
 
 	private const int MAX_HITS = 20;
 	private bool m_isPaused = false;
+	
 	private float m_gameTime = 45f;
 
+	public RPGCharacterController Player;
 	public StateGamePlay(GameManager gm):base(gm) { }
 
-	public override void Enter() {
-		m_gameTime = 45f;
 	
+	
+	public override void Enter() {
+	
+		
 	}
 
 	public override void Execute() {
+		
 	
 
-		m_gameTime -= Time.deltaTime;
-		if(m_gameTime <= 0) {
-			m_gm.NewGameState(m_gm.m_stateGameLost);
-		}
+		
+	}
+
+	public void Update(){
+		
+	
+	
+
 
 		if(Input.GetKeyDown(KeyCode.Escape)) {
 			if(m_isPaused) {
@@ -38,6 +47,9 @@ public class StateGamePlay : GameState {
 		// ... move along 
 	}
 
+
+
+
 	private void ResumeGameMode() {
 		Time.timeScale = 1.0f;
 		m_isPaused = false;
@@ -47,4 +59,6 @@ public class StateGamePlay : GameState {
 		Time.timeScale = 0.0f;
 		m_isPaused = true;
 	}
+
+	
 }
