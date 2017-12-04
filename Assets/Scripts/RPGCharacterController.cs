@@ -37,6 +37,9 @@ public class RPGCharacterController : MonoBehaviour {
 
 	//Scoring vars
 	public int m_score = 0;
+
+	public int m_highScore = 200;
+	public int m_yourScore;
 	public int m_collected;
 	public float m_time;
 	public Text countText;
@@ -56,7 +59,7 @@ public class RPGCharacterController : MonoBehaviour {
 	public GameManager m_gm;
 	Vector3 originalPos;
 
-	public bool scoreReset;
+	public bool scoreReset = false;
 
 	
 	
@@ -64,29 +67,22 @@ public class RPGCharacterController : MonoBehaviour {
 
 
 	void Start(){
+		
 		m_collected = 0;
-		m_time = 60;
+		m_time = 20;
 		countText.text = "Pies Collected: " + m_collected.ToString();
 		countScore.text = "Score: " + m_score.ToString();
 		countTime.text = "Time: " + m_time.ToString();
 		gameObject.transform.position = originalPos;
-	
+		
+		
+		
 		
 		
 
 		
 	}
-	void score(){
-		
-			m_score = 0;
-		
-		
-	}
 
-	
-
-
-	
 
 
 	void OnTriggerEnter(Collider other){
@@ -133,7 +129,21 @@ public class RPGCharacterController : MonoBehaviour {
 		
 	}
 
+	
 
+	void OnDisable()
+	{	
+		if(m_score > 0){
+			m_yourScore = m_score;
+		}
+		
+		if(m_score > m_highScore){
+			m_highScore = m_score;
+			}
+		m_score = 0;
+		
+	}
+	
 
 	
 		
@@ -141,7 +151,7 @@ public class RPGCharacterController : MonoBehaviour {
 
 	void Awake(){
 		m_startPos=transform.position;
-		score();
+		
 		m_controller = GetComponent<CharacterController>();
 		m_animationController = GetComponent<Animator>();
 		m_attackState = Animator.StringToHash("UpperTorso.Attack");

@@ -6,7 +6,8 @@ public class GetScore : MonoBehaviour {
 
 public RPGCharacterController m_cc;
 public Text countScore;
-public int m_holdScore;
+public Text currentScore;
+
 	// Use this for initialization
 	void Start(){
 		
@@ -17,13 +18,11 @@ public int m_holdScore;
 	
 	// Update is called once per frame
 	void Update () {
-		if(m_holdScore < m_cc.m_score){
-			m_holdScore = m_cc.m_score;
-		}
+		
 
 		
-		
-		countScore.text = "Score: " + m_holdScore.ToString();
+		currentScore.text = "your score: " + m_cc.m_yourScore.ToString();
+		countScore.text = "Highscore: " + m_cc.m_highScore.ToString();
 	
 	}
 }
