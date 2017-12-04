@@ -6,7 +6,7 @@ using UnityEngine;
  public class PauseGame : MonoBehaviour {
  
      public GameObject pauseMenu;
-     private bool isEnabled = false;
+     public bool isEnabled = false;
      public bool paused;
 
     public AudioSource m_audio;
@@ -36,7 +36,7 @@ using UnityEngine;
              m_audio.Play();
          }
      }
-void Pause(){
+public void Pause(){
       if (paused) {
              Time.timeScale = 0;
          }

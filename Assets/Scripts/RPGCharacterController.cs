@@ -42,6 +42,7 @@ public class RPGCharacterController : MonoBehaviour {
 	public int m_yourScore;
 	public int m_collected;
 	public float m_time;
+	public float m_wholeAmount;
 	public Text countText;
 	public Text countScore;
 	public Text countTime;
@@ -115,9 +116,10 @@ public class RPGCharacterController : MonoBehaviour {
 	}
 
 	void gameTime(){
-		m_time -= Time.deltaTime;
+		m_time = m_time -=1 * Time.deltaTime;
+		m_wholeAmount = Mathf.Round(m_time);
 			
-		countTime.text = "Time: " + m_time.ToString();
+		countTime.text = "Time: " + m_wholeAmount.ToString();
 
 		
 		if(m_time <= 0){

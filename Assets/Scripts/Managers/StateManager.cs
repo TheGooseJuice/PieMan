@@ -9,6 +9,8 @@ public class StateManager : MonoBehaviour {
 	public GameObject[] m_gameStates; 
 	private GameStates m_activeState; 
 	private int m_numStates;
+
+	public PauseGame m_pg;
 	
 
 	
@@ -39,6 +41,23 @@ public class StateManager : MonoBehaviour {
 		m_activeState = GameStates.PLAY;
 		m_gameStates[(int)m_activeState].SetActive(true);
 		
+		
+	}
+
+	public void MenuGame() {
+		
+		GameManager.Instance.m_stateGameMenu.PlayGame();
+		m_stopAudio.RemoveAudio();
+		m_gameStates[(int)m_activeState].SetActive(false);
+		m_activeState = GameStates.MENU;
+		m_gameStates[(int)m_activeState].SetActive(true);
+		removePause();
+		
+	}
+
+	public void removePause(){
+		
+      	m_pg.gameObject.SetActive (false);
 		
 	}
 
